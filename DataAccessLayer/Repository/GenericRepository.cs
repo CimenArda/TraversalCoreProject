@@ -17,11 +17,12 @@ namespace DataAccessLayer.Repository
            return c.Set<T>().ToList();
         }
 
-        public T GetById(T entity)
+   
+
+        public T GetById(int id)
         {
             using var c = new Context();
-
-            return c.Set<T>().Find(entity);
+            return c.Set<T>().Find(id);
         }
 
         public void Insert(T entity)
