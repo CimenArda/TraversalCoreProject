@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace TraversalCoreProject.ViewComponents.Default
 {
@@ -7,6 +9,7 @@ namespace TraversalCoreProject.ViewComponents.Default
     {
         private readonly IDestinationService _destinationService;
 
+        Context context =new Context();
         public _PopularDestinations(IDestinationService destinationService)
         {
             _destinationService = destinationService;
@@ -14,7 +17,7 @@ namespace TraversalCoreProject.ViewComponents.Default
 
         public IViewComponentResult Invoke()
         {
-         var values =  _destinationService.TGetAllList();
+         var values = context.Destinations.Where(x=>x.Status==true).ToList();
             return View(values);
         }
     }

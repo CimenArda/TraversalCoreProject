@@ -2,7 +2,29 @@
 @{
     Layout = null;
 }
+@*
+<!doctype html>
+<html lang="zxx">
 
+
+
+<body>
+
+
+    @RenderBody()
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+ *@
 <!-- 
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -14,21 +36,20 @@ Author URL: http://w3layouts.com
 @await Html.PartialAsync("/Views/LayoutPartial/_HeaderPartial.cshtml")
 
 <body>
+    <!--header-->
     @await Html.PartialAsync("/Views/LayoutPartial/_NavbarPartial.cshtml")
 
 
     @RenderBody()
 
-    
-
     @await Html.PartialAsync("/Views/LayoutPartial/_FooterPartial.cshtml")
 
-
+    <!-- Template JavaScript -->
     @await Html.PartialAsync("/Views/LayoutPartial/_ScriptPartial.cshtml")
 
 
-   
 </body>
 
 </html>
+
 
