@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,5 +18,7 @@ namespace DataAccessLayer.Abstract
         T GetById(int id);
 
         List<T> GetAllList();   
+
+        List<T> GetListByFilter(Expression<Func<T, bool>> filter);
     }
 }
