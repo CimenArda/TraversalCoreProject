@@ -1,8 +1,8 @@
-﻿
+﻿@model EntityLayer.Concrete.Destination
 <div class="leave-comment-form mt-5" id="reply">
     <h4 class="side-title mb-2">Bir Yorum Bırak!</h4>
         E-posta adresiniz yayımlanmayacaktır. Zorunlu alanlar işaretlenmiştir *    </p>
-    <form method="post">
+    <form method="post" asp-action="AddComment" asp-controller="Comment">
 
         <div class="form-group">
             <textarea name="CommentContext" class="form-control" placeholder="Yorumunuz*" required=""
@@ -15,7 +15,7 @@
                        required="">
             </div>
             <div class="form-group col-lg-6">
-                <input type="text" name="DestinationID" class="form-control" placeholder="Destination*" required="">
+                <input type="hidden" name="DestinationID" value="@Model.DestinationID" class="form-control" placeholder="Destination*" required="">
             </div>
         </div>
 
