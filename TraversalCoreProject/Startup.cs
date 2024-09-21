@@ -61,6 +61,9 @@ namespace TraversalCoreProject
             services.AddScoped<ICommentDal, EfCommentDal>();
             services.AddScoped<ICommentService, CommentManager>();
 
+            services.AddScoped<IGuideDal, EfGuideDal>();
+            services.AddScoped<IGuideService, GuideManager>();
+
             services.AddControllersWithViews();
         }
 
