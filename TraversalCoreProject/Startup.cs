@@ -44,7 +44,8 @@ namespace TraversalCoreProject
 
             services.AddMvc();
 
-
+            services.AddScoped<IAppUserDal, EfAppUserDal>();
+            services.AddScoped<IAppUserService, AppUserManager>();
 
             services.AddScoped<IDestinationDal,EfDestinationDal>();
             services.AddScoped<IDestinationService,DestinationManager>();
