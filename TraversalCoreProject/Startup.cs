@@ -1,5 +1,6 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.Container;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
@@ -44,30 +45,8 @@ namespace TraversalCoreProject
 
             services.AddMvc();
 
-            services.AddScoped<IAppUserDal, EfAppUserDal>();
-            services.AddScoped<IAppUserService, AppUserManager>();
 
-            services.AddScoped<IDestinationDal,EfDestinationDal>();
-            services.AddScoped<IDestinationService,DestinationManager>();
-
-
-            services.AddScoped<IReservationDal, EfReservationDal>();
-            services.AddScoped<IReservationService, ReservationManager>();
-
-            services.AddScoped<IFeatureDal, EfFeatureDal>();
-            services.AddScoped<IFeatureService, FeatureManager>();
-
-            services.AddScoped<ISubAboutDal, EfSubAboutDal>();
-            services.AddScoped<ISubAboutService, SubAboutManager>();
-
-            services.AddScoped<ITestimonialDal, EfTestimonialDal>();
-            services.AddScoped<ITestimonialService, TestimonialManager>();
-
-            services.AddScoped<ICommentDal, EfCommentDal>();
-            services.AddScoped<ICommentService, CommentManager>();
-
-            services.AddScoped<IGuideDal, EfGuideDal>();
-            services.AddScoped<IGuideService, GuideManager>();
+            services.ContainerDependencies();
 
             services.AddControllersWithViews();
         }
