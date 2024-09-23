@@ -49,6 +49,10 @@ namespace TraversalCoreProject
             services.AddScoped<IDestinationDal,EfDestinationDal>();
             services.AddScoped<IDestinationService,DestinationManager>();
 
+
+            services.AddScoped<IReservationDal, EfReservationDal>();
+            services.AddScoped<IReservationService, ReservationManager>();
+
             services.AddScoped<IFeatureDal, EfFeatureDal>();
             services.AddScoped<IFeatureService, FeatureManager>();
 
