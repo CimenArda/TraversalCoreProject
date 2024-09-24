@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProject.Areas.Admin.Controllers
@@ -35,9 +37,23 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         [Route("AddGuide")]
         public IActionResult AddGuide(Guid g)
         {
-            _guideService.TInsert(g);
+            GuideValidator validationRules = new GuideValidator();
 
-            return RedirectToAction("Index");
+            ValidationResult result = validationRules.Validate(g);
+            if (result.IsValid)
+            {
+                _guideService.TInsert(g);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+
+                }
+            }
+            return View();
         }
         [HttpGet]
         public IActionResult EditGuide(int id)
