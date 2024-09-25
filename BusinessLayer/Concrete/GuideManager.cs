@@ -18,6 +18,16 @@ namespace BusinessLayer.Concrete
             _GuidDal = GuidDal;
         }
 
+        public void TChangeToFalseByGuide(int id)
+        {
+            _GuidDal.ChangeToFalseByGuide(id);
+        }
+
+        public void TChangeToTrueByGuide(int id)
+        {
+            _GuidDal.ChangeToTrueByGuide(id);
+        }
+
         public List<EntityLayer.Concrete.Guid> TGetAllList()
         {
             return _GuidDal.GetAllList();
