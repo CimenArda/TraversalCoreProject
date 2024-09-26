@@ -18,6 +18,11 @@ namespace BusinessLayer.Container
             services.AddScoped<IAppUserDal, EfAppUserDal>();
             services.AddScoped<IAppUserService, AppUserManager>();
 
+            services.AddScoped<IContactUsDal, EfContactUsDal>();
+            services.AddScoped<IContactUsService, ContactUsManager>();
+
+
+
             services.AddScoped<IDestinationDal, EfDestinationDal>();
             services.AddScoped<IDestinationService, DestinationManager>();
 
