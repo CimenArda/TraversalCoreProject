@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using TraversalApi.DAL.Context;
@@ -6,6 +7,7 @@ using TraversalApi.DAL.Entities;
 
 namespace TraversalApi.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class VisitorController : ControllerBase
