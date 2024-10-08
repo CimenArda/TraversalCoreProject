@@ -2,8 +2,10 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace TraversalCoreProject.Controllers
 {
@@ -11,10 +13,12 @@ namespace TraversalCoreProject.Controllers
     {
 
         private readonly ICommentService _commentService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public CommentController(ICommentService commentService)
+        public CommentController(ICommentService commentService, UserManager<AppUser> userManager)
         {
             _commentService = commentService;
+            _userManager = userManager;
         }
 
         public PartialViewResult AddComment()

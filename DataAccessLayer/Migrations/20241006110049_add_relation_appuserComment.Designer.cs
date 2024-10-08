@@ -4,14 +4,16 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20241006110049_add_relation_appuserComment")]
+    partial class add_relation_appuserComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -330,9 +332,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("CoverImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("DayNight")
                         .HasColumnType("nvarchar(max)");
 
@@ -344,9 +343,6 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("Details2")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("GuidID")
-                        .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
@@ -361,8 +357,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("DestinationID");
-
-                    b.HasIndex("GuidID");
 
                     b.ToTable("Destinations");
                 });
@@ -656,15 +650,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Destination");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Destination", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.Guid", "Guid")
-                        .WithMany("Destinations")
-                        .HasForeignKey("GuidID");
-
-                    b.Navigation("Guid");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Reservation", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.AppUser", "AppUser")
@@ -747,11 +732,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Reservations");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Guid", b =>
-                {
-                    b.Navigation("Destinations");
                 });
 #pragma warning restore 612, 618
         }

@@ -28,6 +28,11 @@ namespace BusinessLayer.Concrete
             return _DestinationDal.GetById(id);
         }
 
+        public Destination TGetDestinationWithGuide(int id)
+        {
+            return _DestinationDal.GetDestinationWithGuide(id);
+        }
+
         public void TInsert(Destination entity)
         {
             _DestinationDal.Insert(entity);

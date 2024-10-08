@@ -10,5 +10,7 @@ namespace DataAccessLayer.Abstract
     public interface ICommentDal :IGenericDal<Comment>
     {
         List<Comment> GetListCommentWithDestination();
+
+        public List<Comment> GetListCommentWithDestinationAndUser(int id);
     }
 }

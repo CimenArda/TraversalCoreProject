@@ -17,5 +17,7 @@ namespace EntityLayer.Concrete
         public string Link2 { get; set; }
 
         public bool Status { get; set; }
+
+        public List<Destination> Destinations { get; set; }
     }
 }
