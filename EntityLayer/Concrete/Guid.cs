@@ -13,8 +13,9 @@ namespace EntityLayer.Concrete
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        public string Link1 { get; set; }
+        public string Description2 { get; set; }
         public string Link2 { get; set; }
+        public string GuidListImage { get; set; }
 
         public bool Status { get; set; }
 
