@@ -71,6 +71,10 @@ namespace TraversalCoreProject
 
             services.AddMvc();
 
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.LoginPath = "/Login/SignIn";
+            });
 
             services.AddHttpClient();
 

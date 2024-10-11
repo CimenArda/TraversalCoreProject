@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using SİgnalRApiForSql.Models;
 using System.Threading.Tasks;
 
-namespace SİgnalRApiForSql.Models
+namespace SİgnalRApiForSql.Hubs
 {
     public class VisitorHub :Hub
     {
-        private readonly VisitorService _visitorService;
+         private readonly VisitorService _visitorService;
 
         public VisitorHub(VisitorService visitorService)
         {
@@ -14,7 +15,7 @@ namespace SİgnalRApiForSql.Models
 
         public async Task GetVisitorList()
         {
-            await Clients.All.SendAsync("CallVisitList", "gelecek veri");
+            await Clients.All.SendAsync("CallVisitList", _visitorService.GetVisitorChartList());
         }
     }
 }

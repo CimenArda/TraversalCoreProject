@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SİgnalRApiForSql.DAL;
+using SİgnalRApiForSql.Hubs;
 using SİgnalRApiForSql.Models;
 using System;
 using System.Collections.Generic;
@@ -35,11 +36,14 @@ namespace SİgnalRApiForSql
             services.AddScoped<VisitorService>();
             services.AddSignalR();
 
-            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
-            {
-                builder.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials();
-
-            }));
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder.AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .SetIsOriginAllowed((host) => true)
+                           .AllowCredentials();
+                }));
 
 
 
