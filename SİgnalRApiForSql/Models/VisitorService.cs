@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using SignalRApi.DAL;
-using SignalRApi.Hubs;
+using SİgnalRApiForSql.DAL;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SignalRApi.Model
+namespace SİgnalRApiForSql.Models
 {
     public class VisitorService
     {
@@ -29,7 +28,7 @@ namespace SignalRApi.Model
         {
             await _context.Visitors.AddAsync(visitor);
             await _context.SaveChangesAsync();
-            await _hubContext.Clients.All.SendAsync("CallVisitorList","GELECEK VERİ");
+            await _hubContext.Clients.All.SendAsync("CallVisitorList", "GELECEK VERİ");
         }
 
         public List<VisitorChart> GetVisitorChartList()
@@ -38,12 +37,12 @@ namespace SignalRApi.Model
 
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "Select * from crosstab ('Select VisitDate,City,CityVisitCount from Visitors Order By 1,2' ) As ct(VisitDate date,City1 int ,City2 int,City3 int,City4 int,City5 int);";
+                command.CommandText = "query";
                 command.CommandType = System.Data.CommandType.Text;
 
                 _context.Database.OpenConnection();
 
-                using(var reader = command.ExecuteReader())
+                using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
