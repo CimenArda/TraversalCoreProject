@@ -23,5 +23,15 @@ namespace TraversalCoreProject.Areas.Member.Controllers
             ViewBag.UserImage = values.ImageUrl;
             return View();
         }
+
+
+        public async Task<IActionResult> MemberDashboard()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            ViewBag.userName = values.Name + " " + values.Surname;
+
+            ViewBag.UserImage = values.ImageUrl;
+            return View();
+        }
     }
 }

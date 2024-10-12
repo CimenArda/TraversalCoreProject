@@ -33,6 +33,11 @@ namespace BusinessLayer.Concrete
             return _DestinationDal.GetDestinationWithGuide(id);
         }
 
+        public List<Destination> TGetLast4Destinations()
+        {
+            return _DestinationDal.GetLast4Destinations();
+        }
+
         public void TInsert(Destination entity)
         {
             _DestinationDal.Insert(entity);
